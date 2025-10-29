@@ -3,8 +3,7 @@ from itertools import zip_longest
 
 carSimData = []
 motecData = []
-filepath = r'C:\Users\bilye\OneDrive\Desktop\formula-student-stuff\oct14CarsimSmaller.csv'
-with open(filepath, 'r+', newline='') as carsimCsv:
+with open("oct14CarsimSmaller.csv", 'r+', newline='') as carsimCsv:
     reader = csv.reader(carsimCsv)
     first_row = next(reader)
     for cell in first_row:
