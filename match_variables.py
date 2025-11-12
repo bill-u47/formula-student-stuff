@@ -151,12 +151,12 @@ class VehicleTelemetryMatcher:
             print(f"✗ Error loading dictionary: {e}")
             raise
     
-    def load_motec_data(self, filepath: str = 'fb24MotecSmaller.csv'):
+    def load_motec_data(self, filepath: str = 'fb24Motec.csv'):
         """Load Motec telemetry data (headers in row 15)."""
         print("=== LOADING MOTEC TELEMETRY DATA ===")
         try:
             # Read row 15 as headers (0-indexed = row 14)
-            df = pd.read_csv(filepath, header=14, nrows=0, encoding='utf-8')
+            df = pd.read_csv(filepath, header=12, nrows=0, encoding='utf-8')
             self.motec_headers = df.columns.tolist()
             
             print(f"✓ Motec variables loaded: {len(self.motec_headers)}")
@@ -167,7 +167,7 @@ class VehicleTelemetryMatcher:
             print(f"✗ Error loading Motec data: {e}")
             raise
     
-    def load_carsim_data(self, filepath: str = 'oct14CarsimSmaller.csv'):
+    def load_carsim_data(self, filepath: str = 'oct14Carsim.csv'):
         """Load CarSim sensor data (headers in row 1)."""
         print("=== LOADING CARSIM SENSOR DATA ===")
         try:
@@ -754,8 +754,8 @@ def main():
     
     # Load data
     matcher.load_dictionary('dictionary.csv')
-    matcher.load_motec_data('fb24MotecSmaller.csv')
-    matcher.load_carsim_data('oct14CarsimSmaller.csv')
+    matcher.load_motec_data('fb24Motec.csv')
+    matcher.load_carsim_data('oct14Carsim.csv')
     
     # Run matching
     matches = matcher.run_matching()
